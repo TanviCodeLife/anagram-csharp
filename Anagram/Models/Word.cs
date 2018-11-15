@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Anagram.Models
@@ -10,10 +11,11 @@ namespace Anagram.Models
     public Word (string firstWord)
     {
       _firstWord = firstWord;
+      _compareList = new List<string> {};
     }
 
-    public Word(List<string> compareList) {
-
+    public Word(List<string> compareList)
+    {
       _compareList = compareList;
     }
 
@@ -27,13 +29,21 @@ namespace Anagram.Models
       return _firstWord;
     }
 
-    public List<string> GetFirstList (){
+    public List<string> GetFirstList ()
+    {
       return _compareList;
     }
 
     public void AddToCompareList(string word)
     {
       _compareList.Add(word);
+    }
+
+    public char[] CompareWordWithSuggestions()
+    {
+      char[] originalArray = this._firstWord.ToCharArray();
+      Array.Sort(originalArray);
+      return originalArray;
     }
   }
 }
