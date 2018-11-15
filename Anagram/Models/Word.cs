@@ -30,5 +30,10 @@ namespace Anagram.Models
     public List<string> GetFirstList (){
       return _compareList;
     }
+
+    public void AddToCompareList(string word)
+    {
+      _compareList.Add(word);
+    }
   }
 }

@@ -17,7 +17,6 @@ namespace Anagram.Models
     {
       Word testWord = new Word("test");
       Assert.AreEqual(typeof(Word), testWord.GetType());
-      Console.WriteLine(testWord.GetType());
     }
 
     [TestMethod]
@@ -67,6 +66,33 @@ namespace Anagram.Models
       Assert.AreEqual(testInputWord, result);
       CollectionAssert.AreEqual(testList, listResult);
     }
+
+    [TestMethod]
+    public void AddToCompareList_AddEachUserInputToList_List()
+    {
+      //Arrange
+      List<string> testList = new List<string>{};
+      string testInputWord = "TestListString";
+
+      Word testWord = new Word(testInputWord, testList);
+      testWord.AddToCompareList(testInputWord);
+      testWord.AddToCompareList("SecondItemAdded");
+
+      Word resultWord = new Word(testInputWord, new List<string> (new string[] {"TestListString", "SecondItemAdded"}));
+
+      //Act
+      string result = testWord.GetFirstWord();
+      List<string> listResult = testWord.GetFirstList();
+
+      foreach (string thisWord in resultWord.GetFirstList())
+      {
+        Console.WriteLine("Output from resultWord Object compareList: " + thisWord);
+      }
+
+      //Assert
+      CollectionAssert.AreEqual(testWord.GetFirstList(), resultWord.GetFirstList());
+    }
+
 
 
   }
