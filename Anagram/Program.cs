@@ -20,9 +20,10 @@ namespace Anagram.Models
         newWord.AddToCompareList(suggestionWord);
         Console.WriteLine("Here is your comparison result");
         char[] outputArr = newWord.CompareWordWithSuggestions();
-        foreach (char res in outputArr) {
-          Console.WriteLine("\n"+ res);
-        }
+        // foreach (char res in outputArr) {
+        //   Console.WriteLine("\n"+ res);
+        // }
+        newWord.ParseEachWordInSuggestionList();
       }
       else
       {
